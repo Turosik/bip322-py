@@ -24,3 +24,6 @@ classifiers = [
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
+
+[project.urls]
+Source = "https://github.com/Turosik/bip322-py"
