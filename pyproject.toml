@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "bip322"
-version="0.1.5"
+version="0.1.6"
 description = "Python ↔ Rust bridge for verifying BIP-322 Bitcoin message signatures."
 authors = [
     { name = "Aleksandr Kozlovskii", email = "turosik.cy@gmail.com" }
@@ -24,6 +24,7 @@ classifiers = [
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
+python-source = "python"
 
 [project.urls]
 Source = "https://github.com/Turosik/bip322-py"
