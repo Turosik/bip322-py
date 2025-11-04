@@ -49,7 +49,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "bip322_py"
+name = "bip322-py"
 version = "0.1.0"
 dependencies = [
  "bip322",

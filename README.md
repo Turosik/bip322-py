@@ -17,6 +17,16 @@ This package provides a single, high-performance function for verifying BIP-322 
 
 ## 🧩 Installation
 
+
+### 🧑‍💻 For end users (from PyPI)
+
+Simply install with pip:
+
+```bash
+pip install bip322
+```
+
+
 ### From source (development)
 ```bash
 # Create and activate venv (Python 3.8+)
