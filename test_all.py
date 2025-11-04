@@ -40,3 +40,10 @@ MESSAGE_BAD = (
 )
 def test_all(address: str, message: str, signature: str, expected: bool) -> None:
     assert bip322.verify_simple_encoded(address, message, signature) is expected
+
+
+def test_kwargs_ok():
+    import bip322
+    assert bip322.verify_simple_encoded(
+        address="a", message="b", base64_signature="c"
+    ) is False
