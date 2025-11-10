@@ -15,6 +15,7 @@ SIG_OK = (
     "T0/LTz5cavqu89BaJhP1YTBAzAQ=="
 )
 
+ADDRESS_BAD = "invalid_address"
 # Tampered signature (first char A→B; still valid base64 but should fail verification)
 SIG_BAD = (
     "BUG3Km/EO+ukRNIzGP7YzAS2RfzrIfK7eIEfVrxi/ddEhOGsPiB3jpirvL4bmd/"
@@ -31,19 +32,26 @@ MESSAGE_BAD = (
 )
 
 @pytest.mark.parametrize(
-    "address,message,signature,expected",
+    "address,message,signature,expected_validation_success",
     [
         pytest.param(ADDRESS_OK, MESSAGE_OK, SIG_OK, True, id="valid"),
+        pytest.param(ADDRESS_BAD, MESSAGE_OK, SIG_OK, False, id="invalid address"),
         pytest.param(ADDRESS_OK, MESSAGE_OK, SIG_BAD, False, id="invalid signature"),
         pytest.param(ADDRESS_OK, MESSAGE_BAD, SIG_OK, False, id="invalid message"),
     ],
 )
-def test_all(address: str, message: str, signature: str, expected: bool) -> None:
-    assert bip322.verify_simple_encoded(address, message, signature) is expected
+def test_all(address: str, message: str, signature: str, expected_validation_success: bool) -> None:
+    if expected_validation_success:
+        assert bip322.verify_simple_encoded(address, message, signature) is None
+    else:
+        with pytest.raises(bip322.VerificationError):
+            bip322.verify_simple_encoded(address, message, signature)
 
 
 def test_kwargs_ok():
     import bip322
     assert bip322.verify_simple_encoded(
-        address="a", message="b", base64_signature="c"
-    ) is False
+        address=ADDRESS_OK,
+        message=MESSAGE_OK,
+        base64_signature=SIG_OK,
+    ) is None

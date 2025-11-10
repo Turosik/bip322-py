@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "bip322"
-version="0.1.7"
+version="0.2.0"
 description = "Python ↔ Rust bridge for verifying BIP-322 Bitcoin message signatures."
 authors = [
     { name = "Aleksandr Kozlovskii", email = "turosik.cy@gmail.com" }
