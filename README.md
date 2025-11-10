@@ -10,7 +10,6 @@ This package provides a single, high-performance function for verifying BIP-322 
 
 - Lightweight wrapper around the Rust `bip322` crate  
 - Validates Bitcoin message signatures in **BIP-322 simple mode**  
-- Works on **macOS** and **Linux**  
 - Fully typed and pip-installable wheel (`.whl`)
 
 ---
